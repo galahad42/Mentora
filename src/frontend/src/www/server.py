@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, send_file
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 from pandas import ExcelFile
 import pandas as pd
 import numpy as np
@@ -9,12 +9,12 @@ from time import sleep
 app = Flask(__name__)
 
 # matching and data cleaning-related variables
-sys.path.append("./src/scripts/")
+sys.path.append("E:/CODE/3rd year/mini-project/student-matching/src/frontend/src/scripts")
 from match import match_all
 from clean_data import clean_files
 
 # neo4j
-from neo4j.v1 import GraphDatabase, basic_auth
+from neo4j import GraphDatabase, basic_auth
 
 # global variables
 MENTOR_FILENAME = ""
@@ -22,8 +22,8 @@ STUDENT_FILENAME = ""
 SUCCESS_CODE = 1
 FAILURE_CODE = -1
 ALLOWED_FILE_EXTENSIONS = set(['xlsx'])
-UPLOAD_FOLDER="./src/www/uploads/"
-DOWNLOAD_FOLDER="./src/www/downloads/"
+UPLOAD_FOLDER="E:/CODE/3rd year/mini-project/student-matching/src/frontend/src/www/uploads/"
+DOWNLOAD_FOLDER="E:/CODE/3rd year/mini-project/student-matching/src/frontend/src/www/downloads/"
 MATCH_OUTPUT_FILE = "matched.xlsx"
 
 # app configurations

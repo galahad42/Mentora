@@ -42,18 +42,18 @@ def clean_files(input_file, output_file):
         curr_col = df[header]
         for j, elem in enumerate(curr_col):
             if (pd.isnull(elem)):
-                df.set_value(j, header, 'Not Applicable') # assume Not Applicable if empty
+                df.at[j, header] = 'Not Applicable' # assume Not Applicable if empty
 
     # fill-in missing data for columns 15-end (Strongly Agree, Agree, ... etc.)
     for i, header in enumerate(df[:][15:]):
         curr_col = df[header]
         for j, elem in enumerate(curr_col):
             if (pd.isnull(elem) or str(elem).lower() == 'Neither Agree or Disagree'.lower()):
-                df.set_value(j, header, 'Neutral')
+                df.at[j, header] =  'Neutral'
             elif (str(elem).lower() == 'Slightly Agree'.lower()):
-                df.set_value(j, header, 'Agree')
+                df.at[j, header] = 'Agree'
             elif (str(elem).lower() == 'Slightly Disagree'.lower()):
-                df.set_value(j, header, 'Agree')
+                df.at[j, header] = 'Agree'
 
     # convert categorical strings to numerical
     for i, header in enumerate (df.iloc[:,6:]): # all rows, columns 6-15
