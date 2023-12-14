@@ -1,20 +1,20 @@
 import os
 from flask import Flask
 from flask import render_template, request, json, redirect, url_for, send_from_directory
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import sys
 
 #Matching related variables
-sys.path.append("./src/")
+sys.path.append("E:/CODE/3rd year/mini-project/student-matching/src")
 from match import match
 
 #Data cleaning
-sys.path.append("./src/data-cleaning")
+sys.path.append("E:/CODE/3rd year/mini-project/student-matching/src/data-cleaning")
 from clean_data import clean_files
 
 #Global Variables
-UPLOAD_FOLDER="./src/www/uploads/"
-DOWNLOAD_FOLDER="./src/www/downloads/"
+UPLOAD_FOLDER="E:/CODE/3rd year/mini-project/student-matching/src/www/uploads/"
+DOWNLOAD_FOLDER="E:/CODE/3rd year/mini-project/student-matching/src/www/downloads/"
 MATCH_OUTPUT_FILE = "matched.xlsx"
 ALLOWED_EXTENSIONS = set(['txt', 'xlsx'])
 

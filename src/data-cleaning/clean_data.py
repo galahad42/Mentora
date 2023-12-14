@@ -38,14 +38,14 @@ def clean_files(input_file, output_file):
         curr_col = df[header]
         for j, elem in enumerate(curr_col):
             if (pd.isnull(elem)):
-                df.set_value(j, header, 'Not Applicable') # assume Not Applicable if empty
+                df.at[j, header] = 'Not Applicable'# assume Not Applicable if empty
 
     # # fill-in missing data for columns 15-end (Strongly Agree, Agree, ... etc.)
     for i, header in enumerate(df[:][15:]):
         curr_col = df[header]
         for j, elem in enumerate(curr_col):
             if (pd.isnull(elem)):
-                df.set_value(j, header, 'Neutral') # assume Neutral if empty
+                df.at[j, header] = 'Neutral' # assume Neutral if empty
 
     # # convert categorical strings to numerical
     for header in df[df.columns[6:]]:
